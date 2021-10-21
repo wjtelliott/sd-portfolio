@@ -1,0 +1,45 @@
+html,
+
+
+
+.nameHeader
+{
+    background-color: white;
+}
+
+
+
+/*Code for our navigational menu on top*/
+.navigationMenu
+{
+    background-color: white;
+    overflow: hidden;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-style: inset;
+    border-color: teal;
+}
+
+
+/*
+Can't think of a great color to use?
+Maybe red
+*/
+.navigationMenu a
+{
+    float:left;
+    color: red;
+    text-align: center;
+    padding: 24px 32px;
+    text-decoration:teal;
+    font-size: 17px;
+}
+.navigationMenu a:hover
+{
+    background-color:teal;
+    color: black;
+}
+.navigationMenu a.active
+{
+    background-color: teal;
+    color:white;
+}

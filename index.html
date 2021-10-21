@@ -3,64 +3,153 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>WJTE - Portfolio</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="javascript" href="./logic.js">
   </head>
   <body>
-    <!-- 
-      Directions:
-        1. Create a DIV element to contain the page content.
-        2. Inside your DIV, create an H1 tag that contains your name as the text.
-        3. Below your H1 tag, create an H2 tag that contains the content text, "Software Developer."
-        4. Below your H2 tag, create an HR tag, which will make a horizontal line.
-        5. Create a paragraph tag and put a sentence of your choice in it. (Suggestion: "My favorite thing about programming is _______.")
-        6. Create an H3 tag that says "My Projects."
-        7. Create a paragraph tag that says "Coming Soon."
-        8. Create an H3 tag that says "About Me."
-        9. Create a paragraph tag that contains the "lorem ipsum" text. HINT: You will need to do a search for this text...it is long! Alternatively, grab a sample from this site: https://generator.lorem-ipsum.info/
 
-        BONUS: Try one of the following ideas if you finish early.
-          - Switch out your lorem ipsum for Hipster Ipsum (https://hipsum.co/).
-          - Add another H3 that contains "Contact Me," a paragraph tag containing your email, and a paragraph tag containing your phone number (these can be fake!).
-     -->
-     
 
-     <div>
+    <script>
 
+        /// <summary>
+        /// This function servers to highlight the correct page at the top navigational
+        /// bar, as well as hide and display the correct information that the user is trying
+        /// to view.
+        /// <param>String - Page to show</param>
+        /// <param>String - Button to make active</param>
+        /// </summary>
+        function displayNewPage(page, btn)
+            {
+                
+                /*
+                    TODO: Find a better way to iterate through these pages
+                    rather than having to keep an updated list each time I
+                    need to add a new page to this.
+                */
+
+                let pages = ["homePage", "projectsPage", "contactPage"];
+                let pageButtons = ["homeBtn", "projectsBtn", "contactBtn"];
+
+                // Return only the pages/Button from the lists above that aren't the one
+                // we clicked on.
+                var filteredPages = pages.filter(function(value)
+                {
+                    return (value == page) ? false : true;
+                })
+                var filteredButtons = pageButtons.filter(function(value)
+                {
+                    return (value == btn) ? false : true;
+                })
+
+
+
+                //console.log(filteredPages);
+                //console.log(filteredButtons);
+                
+                for (var i = 0; i < filteredPages.length; i++)
+                {
+                    changeContent(filteredPages[i], "none");
+                    makeInactive(filteredButtons[i]);
+                }
+
+                makeActive(btn);
+                changeContent(page, "block");
+                return false;
+            }
+
+
+        function makeActive(btn)
+        {
+            // Classname's 'active' will show a different background in css
+            document.getElementById(btn).className = "active";
+        }
+        function makeInactive(btn)
+        {
+            document.getElementById(btn).className = "";
+        }
+
+        // Block to show, none to hide
+        function changeContent(pageName, type)
+        {
+            var temp = document.getElementsByClassName(pageName);
+
+            for (var i = 0; i < temp.length; i++)
+            {
+                document.getElementById(temp[i].id).style.display = type;
+            }
+            return false;
+        }
+    </script>
+
+
+    <!--TODO: Make menu more animated-->
+
+    <div class = "navigationMenu" id="navMenu">
+        <a id = "homeBtn" class="active" href="#home" onclick="return displayNewPage('homePage', 'homeBtn');">Home</a>
+        <a id = "projectsBtn" class = "" href="#projects" onclick="return displayNewPage('projectsPage', 'projectsBtn');">Projects</a>
+        <a id = "contactBtn" class = "" href="#contact" onclick="return displayNewPage('contactPage', 'contactBtn');">Contact</a>
+        <a class = "" href="#TODO">??</a>
+    </div>
+
+    <div class="page_nameHeader">
         <h1>
             William JT Elliott
         </h1>
-
         <h2>
             Software Developer
         </h2>
         <hr>
-        <p>My favorite thing about programming is the ability to create ideas into computer software.</p>
+    </div>
 
-        <h3>
-            My Projects
-        </h3>
-        <p>Coming soon...</p>
 
-        <h3>
-            About Me
-        </h3>
-        <p>
-            Lorem ipsum dolor sit amet, doming impetus vivendum ut vim, vidit dolorem sed in. Vitae vocent vel no, mel definiebas instructior ne. Labore discere invidunt an sea. Stet dissentiunt no mei, dicunt iisque in vix, qui cu illud choro accusamus. Ius porro meliore luptatum id, pro ut prompta sententiae.
-            At prima aliquando accommodare qui, eum nulla constituto posidonium no. At eum dolor detraxit invenire. Ut vim sonet virtute, te commune appetere pri. Eu mea facer nostrum copiosae.
-            Ei per malis propriae, eos no diceret fastidii, te elitr quodsi numquam sed. Quem aliquam prodesset no nec. Laudem ceteros disputando te pro, explicari aliquando duo ei. Est cu inani facilisi torquatos, at per detracto salutandi, viris scripta temporibus id pro. Nobis vitae consul te cum, has accusam conclusionemque no.
-            At vel persequeris consectetuer, et etiam veritus delicata sit. Senserit assueverit te usu, ex ferri accumsan vim. Mazim iudicabit eu eum, eros tacimates has eu, elit erant voluptatum et sed. Ad dolore putent scaevola pri, ex option repudiare qui. Duo inermis omnesque pertinax no, ad usu modo probo nonumy. Has an oratio nostrum, nulla possim cu vix, eos in laudem altera maiorum. Sea dico facer aeterno eu, mollis tacimates duo cu, hinc facete dictas eos ne.
-            Usu fierent reformidans ei, te alia vivendo eos. Etiam delicata liberavisse sea ad, quodsi luptatum adversarium ad vis. Usu graeci fuisset id, eu usu meliore volumus. Nec fabellas iracundia disputationi ei, et vix graeco liberavisse.
-        </p>
 
-        <h3>
-            Contact Me:
-        </h3>
+    <!--#region home page content -->
+    <div id="homePage" class="homePage">
+        <h1>Welcome to my Software Development Portfolio!</h1>
+    </div>
+    <!--endregion-->
+
+    <!--#region project page content-->
+    <div id="projectsPage" class = "projectsPage" style="display:none">
+        <h2>
+            My projects:
+        </h2>
+
+
+        <ul>
+            <li>This first webpage</li>
+            <li>More to come!</li>
+        </ul>
+
+    </div>
+    <!--#endregion-->
+    
+
+    <!--#region contact info-->
+    <div id="contactPage" class = "contactPage" style="display:none">
+        <h2>
+            Contact me:
+        </h2>
+
         <p>Email: MY-EMAIL@Mailinator.com<br>Phone: 555-555-5555
         </p>
 
         <p>This page should be visible on <a href="https://wjtelliott.github.io/sd-portfolio/">Wjtelliott.Github.IO/SD-Portfolio</a>
         <br>Check out my other projects not listed here on <a href="https://github.com/wjtelliott">My Github Account</a></p>
 
+        <img src="./resources/IMG_4685.JPG" width="240">
+
+    </div>
+    <!--#endregion-->
+    
+     <!--
+            Lorem ipsum dolor sit amet, doming impetus vivendum ut vim, vidit dolorem sed in. Vitae vocent vel no, mel definiebas instructior ne. Labore discere invidunt an sea. Stet dissentiunt no mei, dicunt iisque in vix, qui cu illud choro accusamus. Ius porro meliore luptatum id, pro ut prompta sententiae.
+            At prima aliquando accommodare qui, eum nulla constituto posidonium no. At eum dolor detraxit invenire. Ut vim sonet virtute, te commune appetere pri. Eu mea facer nostrum copiosae.
+            Ei per malis propriae, eos no diceret fastidii, te elitr quodsi numquam sed. Quem aliquam prodesset no nec. Laudem ceteros disputando te pro, explicari aliquando duo ei. Est cu inani facilisi torquatos, at per detracto salutandi, viris scripta temporibus id pro. Nobis vitae consul te cum, has accusam conclusionemque no.
+            At vel persequeris consectetuer, et etiam veritus delicata sit. Senserit assueverit te usu, ex ferri accumsan vim. Mazim iudicabit eu eum, eros tacimates has eu, elit erant voluptatum et sed. Ad dolore putent scaevola pri, ex option repudiare qui. Duo inermis omnesque pertinax no, ad usu modo probo nonumy. Has an oratio nostrum, nulla possim cu vix, eos in laudem altera maiorum. Sea dico facer aeterno eu, mollis tacimates duo cu, hinc facete dictas eos ne.
+            Usu fierent reformidans ei, te alia vivendo eos. Etiam delicata liberavisse sea ad, quodsi luptatum adversarium ad vis. Usu graeci fuisset id, eu usu meliore volumus. Nec fabellas iracundia disputationi ei, et vix graeco liberavisse.
+         -->
 
      </div>
   </body>
