@@ -20,6 +20,14 @@ html,
 }
 
 
+.profileImg
+{
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+}
+
 /*
 Can't think of a great color to use?
 Maybe red
@@ -37,9 +45,11 @@ Maybe red
 {
     background-color:teal;
     color: black;
+    padding: 24px 56px;
 }
 .navigationMenu a.active
 {
     background-color: teal;
     color:white;
+    padding: 24px 56px;
 }

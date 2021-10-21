@@ -5,13 +5,72 @@
     <meta name="viewport" content="width=device-width">
     <title>WJTE - Portfolio</title>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="javascript" href="./logic.js">
   </head>
   <body>
 
 
     <script>
 
+        /*TODO: Move this to a new js if I intend to keep it*/
+        var posX = 1;
+        var posY = 50;
+        var velX = 2;
+        var velY = 2;
+
+
+        // Margin min/max
+        boundMinX = 0;
+        boundMaxX = 550;
+        boundMinY = 0;
+        boundMaxY = 350;
+
+        var delta = 0;
+
+
+        var started = false;
+        var inter;
+        function bounceImage()
+        {
+            // Don't let them start more than one timer.
+            (started == true) ? 0 : inter = setInterval(draw, 10);
+            started = true;
+        }
+
+
+        // This is called on an interval.
+        function draw()
+        {
+            document.getElementById("profileImg").style.marginLeft = posX + "px";
+            document.getElementById("profileImg").style.marginTop = posY + "px";
+
+
+
+            
+
+            // Only run for an amount of time
+            if (delta == 1500)
+            {
+                clearInterval(inter);
+            }
+
+            // Change our velocity based on position of margin vs min & max
+            if (posX > boundMaxX) { velX -= velX*2 }
+            // Make sure we use Math.abs or it'll break
+            else if (posX < boundMinX) { velX += Math.abs(velX*2) }
+
+
+            // Same for Y
+            if (posY > boundMaxY) { velY -= velY*2 }
+            else if (posY < boundMinY) { velY += Math.abs(velY*2) }
+
+
+            // Move based on velocity
+            posX += velX;
+            posY += velY;
+
+            delta++;
+        }
+        
         /// <summary>
         /// This function servers to highlight the correct page at the top navigational
         /// bar, as well as hide and display the correct information that the user is trying
@@ -27,6 +86,7 @@
                     rather than having to keep an updated list each time I
                     need to add a new page to this.
                 */
+
 
                 let pages = ["homePage", "projectsPage", "contactPage"];
                 let pageButtons = ["homeBtn", "projectsBtn", "contactBtn"];
@@ -138,7 +198,7 @@
         <p>This page should be visible on <a href="https://wjtelliott.github.io/sd-portfolio/">Wjtelliott.Github.IO/SD-Portfolio</a>
         <br>Check out my other projects not listed here on <a href="https://github.com/wjtelliott">My Github Account</a></p>
 
-        <img src="./resources/IMG_4685.JPG" width="240">
+        <img id="profileImg" class="profileImg" alt="Picture of William Elliott" src="./resources/IMG_4685.JPG" onclick="return bounceImage()" width="240">
 
     </div>
     <!--#endregion-->
