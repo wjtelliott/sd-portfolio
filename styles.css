@@ -1,10 +1,13 @@
-html,
 
-
+html
+{
+    background-color: #141414;
+    color: white;
+}
 
 .nameHeader
 {
-    background-color: white;
+    background-color: #141414;
 }
 
 
@@ -12,7 +15,7 @@ html,
 /*Code for our navigational menu on top*/
 .navigationMenu
 {
-    background-color: white;
+    background-color: #141414;
     overflow: hidden;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-style: inset;
@@ -50,6 +53,6 @@ Maybe red
 .navigationMenu a.active
 {
     background-color: teal;
-    color:white;
+    color:#141414;
     padding: 24px 56px;
 }
